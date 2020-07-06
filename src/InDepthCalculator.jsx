@@ -29,7 +29,7 @@ const InDepthCalculator = ({ className, calcName }) => {
         />
         <ResultButton className={className} setModalClass={setModalClass} />
         <ResultModal
-          result={income}
+          income={income}
           modalClass={modalClass}
           setModalClass={setModalClass}
           className={className}

@@ -20,11 +20,11 @@ const AtAGlanceCalculator = ({ className, calcName }) => {
         />
         <ResultButton className={className} setModalClass={setModalClass} />
         <ResultModal
-          result={income}
+          income={income}
+          age=""
           modalClass={modalClass}
           setModalClass={setModalClass}
           className={className}
-          age=""
         />
       </div>
     </div>
