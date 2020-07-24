@@ -37,6 +37,8 @@ const ResultModal = ({ income, age, modalClass, setModalClass, className }) => {
     excessIncome / 12 - monthlyDonationRec
   );
 
+  const extraThings = ` Extra Things!`;
+
   return (
     <div className={modalClass === "" ? "modal" : modalClass}>
       <div className="modal-content">
@@ -47,7 +49,7 @@ const ResultModal = ({ income, age, modalClass, setModalClass, className }) => {
         <h3>
           and you can still afford ${discretionarySpending} of free spending
           each month.
-          {className === "in-depth-calculator" ? `EXTRA THINGS` : ""}
+          {className === "in-depth-calculator" ? extraThings : ""}
         </h3>
       </div>
     </div>
