@@ -10,23 +10,23 @@ const AtAGlanceCalculator = ({ className, calcName }) => {
 
   return (
     <div className={className}>
-      <h3>{calcName}</h3>
+      <h2>{calcName}</h2>
       <div className={`${className}-arguments`}>
         <Input
-          label="income"
+          label="income-one"
           type="number"
           value={income}
           setValue={setIncome}
         />
-        <ResultButton className={className} setModalClass={setModalClass} />
-        <ResultModal
-          income={income}
-          age=""
-          modalClass={modalClass}
-          setModalClass={setModalClass}
-          className={className}
-        />
       </div>
+      <ResultButton className={className} setModalClass={setModalClass} />
+      <ResultModal
+        income={income}
+        age=""
+        modalClass={modalClass}
+        setModalClass={setModalClass}
+        className={className}
+      />
     </div>
   );
 };

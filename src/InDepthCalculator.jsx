@@ -13,29 +13,29 @@ const InDepthCalculator = ({ className, calcName }) => {
 
   return (
     <div className={className}>
-      <h3>{calcName}</h3>
+      <h2>{calcName}</h2>
       <div className={`${className}-arguments`}>
         <Input
-          label="income"
+          label="income-two"
           type="number"
           value={income}
           setValue={setIncome}
         />
         <Input label="age" type="number" value={age} setValue={setAge} />
         <ContributionSelect
-          id="contribution"
+          label="contribution"
           value={contribution}
           setValue={setContribution}
         />
-        <ResultButton className={className} setModalClass={setModalClass} />
-        <ResultModal
-          income={income}
-          modalClass={modalClass}
-          setModalClass={setModalClass}
-          className={className}
-          age={age}
-        />
       </div>
+      <ResultButton className={className} setModalClass={setModalClass} />
+      <ResultModal
+        income={income}
+        modalClass={modalClass}
+        setModalClass={setModalClass}
+        className={className}
+        age={age}
+      />
     </div>
   );
 };

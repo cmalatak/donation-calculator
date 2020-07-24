@@ -1,9 +1,10 @@
 import React from "react";
 
 const Input = ({ label, type, value, setValue }) => {
+  const text = label.split("-");
   return (
     <label htmlFor={label}>
-      Enter your {label}:
+      Enter your {text[0]}:
       <input
         id={label}
         type={type}

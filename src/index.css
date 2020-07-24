@@ -1,13 +1,58 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Everything from here down was in pursuit of cute folder tabs to choose between calculator */
+/* It did not work, but I haven't given up hope. */
+/* Until the day comes where I do give up hope, this css will remain here */
+
+.calc-container {
+  width: 80%;
+}
+
+ul.calc-tabs {
+  display: flex;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.calc-tabs button {
+  border-radius: 25px 25px 0px 0px;
+  margin-right: 10px;
+  display: inline-block;
+  background: lightgoldenrodyellow;
+  color: #7f7f7f;
+  cursor: pointer;
+  padding: 5px 25px 5px 25px;
+}
+
+.calc-content-container > div:not(:first-child) {
+  display: none;
+}
+
+.calc-content-container > div {
+  padding: 10px;
+  text-align: left;
+  min-height: 200px;
+  background: lightgoldenrodyellow;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+ul.calc-tabs a.active {
+  font-weight: bold;
+  background: lightgoldenrodyellow;
+  color: black;
 }

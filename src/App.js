@@ -7,6 +7,7 @@ import InDepthCalculator from "./InDepthCalculator";
 const App = () => {
   return (
     <div className="app">
+      <header>Donation Calculator</header>
       <h1>How much should I be donating?</h1>
       <AtAGlanceCalculator
         className="at-a-glance-calculator"
