@@ -1,13 +1,6 @@
 import React from "react";
 
-const ResultButton = ({
-  income,
-  age,
-  debt,
-  contribution,
-  className,
-  setModalClass,
-}) => {
+const ResultButton = ({ income, className, setModalClass }) => {
   return (
     <button
       className={`${className}-result-button`}

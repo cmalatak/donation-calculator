@@ -19,7 +19,11 @@ const AtAGlanceCalculator = ({ className, calcName }) => {
           setValue={setIncome}
         />
       </div>
-      <ResultButton className={className} setModalClass={setModalClass} />
+      <ResultButton
+        income={income}
+        className={className}
+        setModalClass={setModalClass}
+      />
       <ResultModal
         income={income}
         age=""

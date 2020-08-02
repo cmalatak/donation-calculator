@@ -25,7 +25,7 @@ const ResultModal = ({
           debtRate(debt) -
           20) /
         100
-      : (100 - effectiveTaxRate(income) - rentAllocation(income) - 32) / 100;
+      : (100 - effectiveTaxRate(income) - rentAllocation(income) - 33) / 100;
   const excessIncome = income * percentageLeftOver;
   const donationPercentage = (percentageLeftOver) => {
     if (percentageLeftOver < 10) {
@@ -50,20 +50,13 @@ const ResultModal = ({
   const retirementRec = Math.round(
     (income * (retirementSavingRate(age) / 100)) / 12
   );
-  const foodSpendRec = Math.round(
-    (income * (foodSpendingRate(contribution) / 100)) / 12
-  );
+
   const debtSavingRec = Math.round((income * (debtRate(debt) / 100)) / 12);
-  const rentRec = Math.round((income * (rentAllocation(income) / 100)) / 12);
 
-  const budgetRecommendations = {
-    retirement: retirementRec,
-    food: foodSpendRec,
-    debt: debtSavingRec,
-    rent: rentRec,
-  };
-
-  const extraThings = ` You can also set aside $${retirementRec} for retirement, $${debtSavingRec} to pay off your debts, and still be able to afford an apartment at ${rentRec} a month.`;
+  const extraThings =
+    contribution === "Primary Wage-Earner w/ Dependents"
+      ? ` You should also be able to set aside $${retirementRec} to invest in your dependents.`
+      : ` You should also be able to set aside $${retirementRec} for retirement, and $${debtSavingRec} to pay off your debts!`;
 
   return (
     <div className={modalClass === "" ? "modal" : modalClass}>
@@ -75,6 +68,7 @@ const ResultModal = ({
         <h3>
           and you can still afford ${discretionarySpending} of free spending
           each month.
+          <br />
           {className === "in-depth-calculator" ? extraThings : ""}
         </h3>
       </div>
