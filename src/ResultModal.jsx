@@ -3,16 +3,26 @@ import React from "react";
 import { effectiveTaxRate } from "./helperTables/taxRates";
 import { rentAllocation } from "./helperTables/rentRates";
 import { retirementSavingRate } from "./helperTables/retirementRates";
+import debtRate from "./helperTables/debtRate";
 import foodSpendingRate from "./helperTables/foodSpendingRate";
 
-const ResultModal = ({ income, age, modalClass, setModalClass, className }) => {
+const ResultModal = ({
+  income,
+  age,
+  debt,
+  contribution,
+  modalClass,
+  setModalClass,
+  className,
+}) => {
   // For at a glance 62 is the sum of the average rates remaining for food spending and retirement savings
   const percentageLeftOver =
     className === "in-depth-calculator"
       ? (100 -
           effectiveTaxRate(income) -
           rentAllocation(income) -
-          foodSpendingRate("") -
+          foodSpendingRate(contribution) -
+          debtRate(debt) -
           20) /
         100
       : (100 - effectiveTaxRate(income) - rentAllocation(income) - 32) / 100;
@@ -37,7 +47,23 @@ const ResultModal = ({ income, age, modalClass, setModalClass, className }) => {
     excessIncome / 12 - monthlyDonationRec
   );
 
-  const extraThings = ` Extra Things!`;
+  const retirementRec = Math.round(
+    (income * (retirementSavingRate(age) / 100)) / 12
+  );
+  const foodSpendRec = Math.round(
+    (income * (foodSpendingRate(contribution) / 100)) / 12
+  );
+  const debtSavingRec = Math.round((income * (debtRate(debt) / 100)) / 12);
+  const rentRec = Math.round((income * (rentAllocation(income) / 100)) / 12);
+
+  const budgetRecommendations = {
+    retirement: retirementRec,
+    food: foodSpendRec,
+    debt: debtSavingRec,
+    rent: rentRec,
+  };
+
+  const extraThings = ` You can also set aside $${retirementRec} for retirement, $${debtSavingRec} to pay off your debts, and still be able to afford an apartment at ${rentRec} a month.`;
 
   return (
     <div className={modalClass === "" ? "modal" : modalClass}>

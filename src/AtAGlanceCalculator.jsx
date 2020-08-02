@@ -5,7 +5,7 @@ import ResultButton from "./ResultButton";
 import ResultModal from "./ResultModal";
 
 const AtAGlanceCalculator = ({ className, calcName }) => {
-  const [income, setIncome] = useState("Income");
+  const [income, setIncome] = useState(0);
   const [modalClass, setModalClass] = useState("");
 
   return (

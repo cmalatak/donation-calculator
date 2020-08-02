@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContributionSelect = ({ label, value, setValue }) => {
+const Select = ({ label, value, setValue, optionArray }) => {
   return (
     <label htmlFor={label}>
       Enter your {label} status:
@@ -10,13 +10,12 @@ const ContributionSelect = ({ label, value, setValue }) => {
         onChange={(event) => setValue(event.target.value)}
         onBlur={(event) => setValue(event.target.value)}
       >
-        <option>Am a Dependent of Someone</option>
-        <option>Single Head of Household</option>
-        <option>Equal Contributor in Home</option>
-        <option>Responsible for Dependents</option>
+        {optionArray.map((option, index) => (
+          <option key={index}>{option}</option>
+        ))}
       </select>
     </label>
   );
 };
 
-export default ContributionSelect;
+export default Select;

@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import Input from "./Input";
 import ResultButton from "./ResultButton";
 import ResultModal from "./ResultModal";
-import ContributionSelect from "./ContributionSelect";
+import Select from "./Select";
 
 const InDepthCalculator = ({ className, calcName }) => {
-  const [income, setIncome] = useState("Income");
-  const [age, setAge] = useState("Age");
+  const [income, setIncome] = useState(0);
+  const [age, setAge] = useState(0);
+  const [debt, setDebt] = useState("Debt");
   const [contribution, setContribution] = useState("Contribution");
   const [modalClass, setModalClass] = useState("");
 
@@ -22,19 +23,40 @@ const InDepthCalculator = ({ className, calcName }) => {
           setValue={setIncome}
         />
         <Input label="age" type="number" value={age} setValue={setAge} />
-        <ContributionSelect
+        <Select
+          label="debt"
+          value={debt}
+          setValue={setDebt}
+          optionArray={["Currently have debt", "Do not have debt"]}
+        />
+        <Select
           label="contribution"
           value={contribution}
           setValue={setContribution}
+          optionArray={[
+            "Dependent",
+            "Primary Wage-Earner",
+            "Equal Contributor",
+            "Primary Wage-Earner w/ Dependents",
+          ]}
         />
       </div>
-      <ResultButton className={className} setModalClass={setModalClass} />
+      <ResultButton
+        income={income}
+        age={age}
+        debt={debt}
+        contribution={contribution}
+        className={className}
+        setModalClass={setModalClass}
+      />
       <ResultModal
         income={income}
+        age={age}
+        debt={debt}
+        contribution={contribution}
         modalClass={modalClass}
         setModalClass={setModalClass}
         className={className}
-        age={age}
       />
     </div>
   );
