@@ -52,11 +52,15 @@ const ResultModal = ({
   );
 
   const debtSavingRec = Math.round((income * (debtRate(debt) / 100)) / 12);
+  const additionalrecommendation =
+    debt === "Currently have debt"
+      ? `and $${debtSavingRec} to pay off your debts!`
+      : `and still have money left over.`;
 
   const extraThings =
     contribution === "Primary Wage-Earner w/ Dependents"
       ? ` You should also be able to set aside $${retirementRec} to invest in your dependents.`
-      : ` You should also be able to set aside $${retirementRec} for retirement, and $${debtSavingRec} to pay off your debts!`;
+      : ` You should also be able to set aside $${retirementRec} for retirement, ${additionalrecommendation}`;
 
   return (
     <div className={modalClass === "" ? "modal" : modalClass}>
